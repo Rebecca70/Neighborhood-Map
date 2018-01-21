@@ -23,14 +23,16 @@
             function initMap() {
               var map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 13,
-                center: initalLocation
+                center: locations[0].location
               });
+
               var marker = new google.maps.Marker({
-                position: initalLocation,
+                position: locations[0].location,
                 map: map
               });
+              
               var infowindow = new google.maps.InfoWindow({
-                content: initalLocation.content
+                content: locations[0].name
               });
               marker.addListener("click", function(){
                 infowindow.open(map, marker);
