@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Neighborhood Map Lucerne</title>
-
   </head>
   <body>
     <div class="container">
@@ -17,39 +16,65 @@
       <div class="row">
         <div class="col-md-3">
           <h3>Add selection section</h3>
+          <h3>Labels</h3>
+          <ul>
+            <li>O: Outdoor Activity</li>
+            <li>I: Indoor Activity</li>
+          </ul>
         </div>
         <div class="col-md-9" id="map">
           <script>
+            // empty array for markers
+            var markers = [];
+            // initialize map including markers and info windows
             function initMap() {
+              // define location of map upon initialization
               var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: locations[0].location
+                zoom: 15,
+                center: {lat: 47.052216, lng: 8.310492}
               });
-
-              var marker = new google.maps.Marker({
-                position: locations[0].location,
-                map: map
-              });
-              
-              var infowindow = new google.maps.InfoWindow({
-                content: locations[0].name
-              });
-              marker.addListener("click", function(){
-                infowindow.open(map, marker);
-              });
+              // define/create info window
+              var infowindow = new google.maps.InfoWindow();
+              // loop through locations to create maker array
+              for (var i = 0; i < locations.length; i++) {
+                var position = locations[i].location;
+                var name = locations[i].name;
+                var address = locations[i].address;
+                var label = locations[i].label;
+                // create a marker with details from each location in location array
+                 var marker = new google.maps.Marker({
+                  position: position,
+                  name: name,
+                  address: address,
+                  label: label,
+                  map: map,
+                });
+                // push marker details to marker array
+                markers.push(marker);
+                // create event listener to open infowindow upon click on marker
+                marker.addListener('click', function() {
+                  openInfoWindow(this, infowindow);
+                });
+              }
+              // info window to open upon click on marker and bring background
+              // info stored in locations array
+              function openInfoWindow(marker, infowindow) {
+                // Check to make sure the infowindow is not already opened on this marker.
+                if (infowindow.marker != marker) {
+                  infowindow.marker = marker;
+                  infowindow.setContent('<h4>' + marker.name + '</h4>' + '<div>' + marker.address +'</div>');
+                  infowindow.open(map, marker);
+                  // close info window upon moving to new marker
+                  infowindow.addListener('closeclick', function() {
+                    infowindow.marker = null;
+                  });
+                }
+              }
             }
           </script>
-
-
-
         </div>
-
       </div>
-
     </div>
-
-
-
     <script async
       src="js/knockout.js">
     </script>

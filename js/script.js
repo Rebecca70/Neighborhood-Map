@@ -7,7 +7,8 @@ var locations = [
       lng: 8.309038
     },
     name: "Seebrücke",
-    address: "Seebrücke, Luzern"
+    address: "Seebrücke, Luzern",
+    label: "O"
   },
   {
     location: {
@@ -15,7 +16,8 @@ var locations = [
       lng: 8.310826
     },
     name: "Main Station",
-    address: "Zentralstrasse 1, Luzern"
+    address: "Zentralstrasse 1, Luzern",
+    label: "I"
   },
   {
     location: {
@@ -23,7 +25,8 @@ var locations = [
       lng: 8.307509
     },
     name: "Kapellbrücke",
-    address: "Kapellbrücke, Luzern"
+    address: "Kapellbrücke, Luzern",
+    label: "O"
   },
   {
     location: {
@@ -31,6 +34,16 @@ var locations = [
       lng: 8.336391
     },
     name: "Verkehrshaus/Transport Museum",
-    address: "Lidostrasse 5, 6006 Luzern"
+    address: "Lidostrasse 5, 6006 Luzern",
+    label: "I"
+  },
+  {
+    location: {
+      lat: 47.054049,
+      lng: 8.303184
+    },
+    name: "Museggmauer/Town Wall",
+    address: "6004 Luzern",
+    label: "O"
   }
 ]
