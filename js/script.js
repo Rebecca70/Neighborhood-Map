@@ -1,6 +1,4 @@
-
-
-var locations = [
+var allLocations = [
   {
     location: {
       lat: 47.052122,
@@ -8,7 +6,8 @@ var locations = [
     },
     name: "Seebrücke",
     address: "Seebrücke, Luzern",
-    label: "O"
+    label: "O",
+    activity: ["museum", "outdoor"]
   },
   {
     location: {
@@ -17,7 +16,8 @@ var locations = [
     },
     name: "Main Station",
     address: "Zentralstrasse 1, Luzern",
-    label: "I"
+    label: "I",
+    activity: "indoor"
   },
   {
     location: {
@@ -26,7 +26,8 @@ var locations = [
     },
     name: "Kapellbrücke",
     address: "Kapellbrücke, Luzern",
-    label: "O"
+    label: "O",
+    activity: "outdoor"
   },
   {
     location: {
@@ -35,7 +36,8 @@ var locations = [
     },
     name: "Verkehrshaus/Transport Museum",
     address: "Lidostrasse 5, 6006 Luzern",
-    label: "I"
+    label: "I",
+    activity: "indoor"
   },
   {
     location: {
@@ -44,6 +46,22 @@ var locations = [
     },
     name: "Museggmauer/Town Wall",
     address: "6004 Luzern",
-    label: "O"
+    label: "O",
+    activity: "outdoor"
   }
 ]
+
+var ViewModel = function() {
+  var self = this;
+
+  this.activityList = ko.observableArray([]);
+    for (i = 0; i < allLocations.length; i++) {
+      var selectedActivity = allLocations[i].activity;
+
+  this.activityList.push(selectedActivity);
+    }
+  this.chosenActivity = ko.observableArray([]);
+
+}
+
+ko.applyBindings(new ViewModel());

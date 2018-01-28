@@ -15,7 +15,13 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <h3>Add selection section</h3>
+          <!-- TODO: add selection/drop down sectin -->
+
+
+          <h3>Choose the type of location you would like to visit:</h3>
+          <p><select data-bind= "options: activityList, selectedOptions: chosenActivity" size="5" multiple="true"></select>
+          </p>
+
           <h3>Labels</h3>
           <ul>
             <li>O: Outdoor Activity</li>
@@ -36,11 +42,11 @@
               // define/create info window
               var infowindow = new google.maps.InfoWindow();
               // loop through locations to create maker array
-              for (var i = 0; i < locations.length; i++) {
-                var position = locations[i].location;
-                var name = locations[i].name;
-                var address = locations[i].address;
-                var label = locations[i].label;
+              for (var i = 0; i < allLocations.length; i++) {
+                var position = allLocations[i].location;
+                var name = allLocations[i].name;
+                var address = allLocations[i].address;
+                var label = allLocations[i].label;
                 // create a marker with details from each location in location array
                  var marker = new google.maps.Marker({
                   position: position,
