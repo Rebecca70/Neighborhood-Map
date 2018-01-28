@@ -51,15 +51,18 @@ var allLocations = [
   }
 ]
 
+// ViewModel to control selection of activities
 var ViewModel = function() {
   var self = this;
-
+  // loop through allLocations array to capture all activities
+  // TODO: remove double entries
   this.activityList = ko.observableArray([]);
     for (i = 0; i < allLocations.length; i++) {
       var selectedActivity = allLocations[i].activity;
-
+  // add all captured activities to activityList
   this.activityList.push(selectedActivity);
     }
+  // TODO: create function to show only marker with selected activity
   this.chosenActivity = ko.observableArray([]);
 
 }
