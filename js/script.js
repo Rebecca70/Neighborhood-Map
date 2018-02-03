@@ -1,3 +1,5 @@
+var allActivities = ["","outdoor", "indoor", "museum"]
+
 var allLocations = [
   {
     location: {
@@ -7,7 +9,7 @@ var allLocations = [
     name: "Seebrücke",
     address: "Seebrücke, Luzern",
     label: "O",
-    activity: ["museum", "outdoor"]
+    activity: allActivities[1]
   },
   {
     location: {
@@ -17,7 +19,7 @@ var allLocations = [
     name: "Main Station",
     address: "Zentralstrasse 1, Luzern",
     label: "I",
-    activity: "indoor"
+    activity: allActivities[2]
   },
   {
     location: {
@@ -27,7 +29,7 @@ var allLocations = [
     name: "Kapellbrücke",
     address: "Kapellbrücke, Luzern",
     label: "O",
-    activity: "outdoor"
+    activity: allActivities[1]
   },
   {
     location: {
@@ -37,7 +39,7 @@ var allLocations = [
     name: "Verkehrshaus/Transport Museum",
     address: "Lidostrasse 5, 6006 Luzern",
     label: "I",
-    activity: "indoor"
+    activity: [allActivities[2], allActivities[3]]
   },
   {
     location: {
@@ -47,24 +49,39 @@ var allLocations = [
     name: "Museggmauer/Town Wall",
     address: "6004 Luzern",
     label: "O",
-    activity: "outdoor"
+    activity: allActivities[1]
   }
 ]
 
 // ViewModel to control selection of activities
-var ViewModel = function() {
+var ViewModel = function(items) {
   var self = this;
-  // loop through allLocations array to capture all activities
-  // TODO: remove double entries
-  this.activityList = ko.observableArray([]);
-    for (i = 0; i < allLocations.length; i++) {
-      var selectedActivity = allLocations[i].activity;
-  // add all captured activities to activityList
-  this.activityList.push(selectedActivity);
-    }
-  // TODO: create function to show only marker with selected activity
-  this.chosenActivity = ko.observableArray([]);
+  // define activityList for ViewModel
+  this.activityList = ko.observableArray(allActivities);
 
-}
+
+
+
+
+  //TODO: add function to show only marker for selected activity
+  this.chosenActivity = ko.observableArray(allActivities);
+  this.selection = ko.computed(function() {
+    var selectedActivity = [];
+      for (var i = 0; i < allActivities.length; i++) {
+        var activity = allActivities[i];
+      }
+    console.log(activity);
+  });
+
+
+
+
+  };
+
+
+  // for test purpose only
+
+
+
 
 ko.applyBindings(new ViewModel());
