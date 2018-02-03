@@ -58,6 +58,7 @@ var ViewModel = function(items) {
   var self = this;
   // define activityList for ViewModel
   this.activityList = ko.observableArray(allActivities);
+  this.activityList.sort();
 
 
 
